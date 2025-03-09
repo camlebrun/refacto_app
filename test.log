@@ -1,0 +1,32 @@
+09:00:00  Running with dbt=1.9.3
+09:00:01  Registered adapter: bigquery=1.9.1
+09:00:01  Found 10 models, 0 seeds, 0 sources, 100 macros
+09:00:01
+09:00:01  Concurrency: 1 threads (target='dev')
+09:00:01
+09:00:05  1 of 10 START sql incremental model bronze.sales_data ...................... [RUN]
+09:02:05  1 of 10 OK created sql incremental model bronze.sales_data .................. [MERGE (10000000.0 rows, 10000.0 MiB processed) in 120.0s]
+09:02:05  2 of 10 START sql incremental model bronze.customer_data .................... [RUN]
+09:04:05  2 of 10 OK created sql incremental model bronze.customer_data ............... [MERGE (5000000.0 rows, 5000.0 MiB processed) in 120.0s]
+09:04:05  3 of 10 START sql table model silver.sales_summary .......................... [RUN]
+09:06:05  3 of 10 OK created sql table model silver.sales_summary ...................... [CREATE TABLE (8000000.0 rows, 8000.0 MiB processed) in 120.0s]
+09:06:05  4 of 10 START sql table model silver.customer_summary ......................... [RUN]
+09:08:05  4 of 10 OK created sql table model silver.customer_summary .................... [CREATE TABLE (4000000.0 rows, 4000.0 MiB processed) in 120.0s]
+09:08:05  5 of 10 START sql view model gold.daily_metrics .............................. [RUN]
+09:10:05  5 of 10 OK created sql view model gold.daily_metrics ........................ [CREATE VIEW (2000000.0 rows, 2000.0 MiB processed) in 120.0s]
+09:10:05  6 of 10 START sql view model gold.monthly_metrics ............................ [RUN]
+09:12:05  6 of 10 OK created sql view model gold.monthly_metrics ....................... [CREATE VIEW (1000000.0 rows, 1000.0 MiB processed) in 120.0s]
+09:12:05  7 of 10 START sql incremental model bronze.product_data ...................... [RUN]
+09:14:05  7 of 10 OK created sql incremental model bronze.product_data ................ [MERGE (3000000.0 rows, 3000.0 MiB processed) in 120.0s]
+09:14:05  8 of 10 START sql incremental model bronze.order_data ....................... [RUN]
+09:16:05  8 of 10 OK created sql incremental model bronze.order_data ................... [MERGE (6000000.0 rows, 6000.0 MiB processed) in 120.0s]
+09:16:05  9 of 10 START sql table model silver.order_summary ........................... [RUN]
+09:18:05  9 of 10 OK created sql table model silver.order_summary ...................... [CREATE TABLE (5000000.0 rows, 5000.0 MiB processed) in 120.0s]
+09:18:05  10 of 10 START sql table model silver.product_summary ........................ [RUN]
+09:20:05  10 of 10 OK created sql table model silver.product_summary ................... [CREATE TABLE (2000000.0 rows, 2000.0 MiB processed) in 120.0s]
+09:20:05
+09:20:05  Finished running 6 incremental models, 4 table models in 0 hours 20 minutes and 5.00 seconds (1205.00s).
+09:20:05
+09:20:05  Completed successfully
+09:20:05
+09:20:05  Done. PASS=10 WARN=0 ERROR=0 SKIP=0 TOTAL=10

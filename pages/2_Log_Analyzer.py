@@ -590,7 +590,7 @@ def display_cost_analysis(parsed_data):
         st.subheader("Top Data-Consuming Models")
 
         # Sort by data processed (descending)
-        top_data_models = models_df.sort_values('data_processed_mb', ascending=False).head(10)
+        top_data_models = models_df.sort_values('data_processed_mb', ascending=False).head(20)
 
         # Create a formatted table
         top_data_table = pd.DataFrame({
@@ -637,7 +637,7 @@ def display_cost_analysis(parsed_data):
         """)
 
         # Select the least efficient models (highest KB/row)
-        top_inefficient = models_df.sort_values('efficiency_ratio_kb', ascending=False).head(10)
+        top_inefficient = models_df.sort_values('efficiency_ratio_kb', ascending=False).head(20)
 
         # Create a table for inefficient models
         inefficient_table = pd.DataFrame({
@@ -724,7 +724,7 @@ def display_cost_analysis(parsed_data):
         partition_candidates = models_df[
             (models_df['data_processed_mb'] > np.percentile(models_df['data_processed_mb'], 75)) &
             (models_df['efficiency_ratio_kb'] > 0)
-        ].sort_values('data_processed_mb', ascending=False).head(7)
+        ].sort_values('data_processed_mb', ascending=False).head(20)
 
         partition_table = pd.DataFrame({
             'Model': partition_candidates['model_name'],
@@ -741,7 +741,7 @@ def display_cost_analysis(parsed_data):
         # Filter models that are good candidates for clustering
         clustering_candidates = models_df[
             (models_df['rows_processed'] > np.percentile(models_df['rows_processed'], 75))
-        ].sort_values('rows_processed', ascending=False).head(7)
+        ].sort_values('rows_processed', ascending=False).head(20)
 
         clustering_table = pd.DataFrame({
             'Model': clustering_candidates['model_name'],
@@ -756,7 +756,7 @@ def display_cost_analysis(parsed_data):
         st.write("##### 💰 Cost of Creating Tables")
 
         # Filter only tables
-        tables_only = models_df[models_df['operation_type'] == 'CREATE TABLE'].sort_values('data_processed_mb', ascending=False).head(7)
+        tables_only = models_df[models_df['operation_type'] == 'CREATE TABLE'].sort_values('data_processed_mb', ascending=False).head(20)
 
         tables_cost_table = pd.DataFrame({
             'Model': tables_only['model_name'],
